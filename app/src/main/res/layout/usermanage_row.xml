@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="?android:attr/listPreferredItemHeight"
+    android:descendantFocusability="blocksDescendants"
+    android:padding="16dp">
+
+    <TextView
+
+        android:id="@+id/name"
+        android:layout_width="154dp"
+        android:layout_height="35dp"
+        android:layout_alignRight="@id/role"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginEnd="180dp"
+
+        android:textSize="18sp"
+        android:textStyle="bold">
+
+    </TextView>
+
+
+    <TextView
+        android:id="@+id/role"
+        android:layout_width="80dp"
+        android:layout_height="34dp"
+        android:layout_alignRight="@id/editbutton"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginEnd="75dp"
+
+
+        android:focusable="false" />
+
+    <Button
+        android:id="@+id/editbutton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginEnd="45dp"
+        android:background="@drawable/ic_build_black_24dp"
+        android:focusable="false" />
+
+    <Button
+        android:id="@+id/deletebutton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginEnd="4dp"
+        android:background="@drawable/ic_baseline_clear_24"
+        android:focusable="false" />
+
+
+</RelativeLayout>

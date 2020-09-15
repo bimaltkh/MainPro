@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B57</color>
+    <color name="homecolor">#A9858CE2</color>
+    <color name="buttoncolor">#E4B3D0E0</color>
+    <color name="black">#000000</color>
+    <color name="procolor">#A6A9C5</color>
+    <color name="border">#C3DAE4</color>
+    <color name="devicelive">#FFD81B1B</color>
+    <color name="devicelive2">#79DC6E</color>
+    <color name="alarm2color">	#FFA500</color>
+    <color name="alarm3color">#FFFF00</color>
+    <color name="white">#FFFFFF</color>
+
+
+
+</resources>

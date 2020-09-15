@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.wifi">
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".ViewAlarm.ViewAlarm"></activity>
+        <activity android:name=".TabActivity.ViewAlarm.ViewAlarm" />
+        <activity android:name=".TabActivity.NewRole" />
+        <activity android:name=".TabActivity.NewSite" />
+        <activity android:name=".TabActivity.UserDetails" />
+        <activity android:name=".TabActivity.NewUser" />
+        <activity android:name=".TabActivity.RoleManagement" />
+        <activity android:name=".TabActivity.EditUser" />
+        <activity android:name=".TabActivity.UserManagement" />
+        <activity android:name=".TabActivity.sitelist" />
+        <activity android:name=".TabActivity.CustDeviceList" />
+        <activity android:name=".TabActivity.DeviceListhome" />
+        <activity android:name=".DeviceList" />
+        <activity android:name=".TabActivity.Tab5" />
+        <activity android:name=".ModePage" />
+        <activity android:name=".TabActivity.Tab4Set5" />
+        <activity android:name=".TabActivity.Tab4Set4" />
+        <activity android:name=".TabActivity.Tab4Set2" />
+        <activity android:name=".TabActivity.Tab4Set3" />
+        <activity android:name=".TabActivity.Tab4Set1" />
+        <activity android:name=".TabActivity.Tab3Set5Page" />
+        <activity android:name=".TabActivity.Tab3Set4Page" />
+        <activity android:name=".TabActivity.Tab3Set3Page" />
+        <activity android:name=".TabActivity.Tab3Set2Page" />
+        <activity android:name=".TabActivity.Tab3Set1Page" />
+        <activity android:name=".TabActivity.Tab2Set5Page" />
+        <activity android:name=".TabActivity.Tab2Set4Page" />
+        <activity android:name=".TabActivity.Tab2Set3Page" />
+        <activity android:name=".TabActivity.Tab2Set2Page" />
+        <activity android:name=".TabActivity.Tab2Set1Page" />
+        <activity android:name=".TabActivity.Tab1Set4Page" />
+        <activity android:name=".TabActivity.Tab1Set5Page" />
+        <activity android:name=".TabActivity.Tab1Set3Page" />
+        <activity android:name=".TabActivity.Tab1Set2Page" />
+        <activity android:name=".TabActivity.Tab1Set1Page" />
+        <activity android:name=".TabActivity.Tab4" />
+        <activity android:name=".TabActivity.TabMainActivity" />
+        <activity android:name=".LoginPage" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".SplashScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.string" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

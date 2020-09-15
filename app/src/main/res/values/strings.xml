@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">wifi</string>
+    <string name="adddevice">Add Device</string>
+
+    <string name="tab_text_1">Home</string>
+    <string name="tab_text_2">log</string>
+    <string name="tab_text_3">params</string>
+    <string name="tab_text_4">others</string>
+    <string-array name="Tab2items">
+        <item>Set1</item>
+        <item>Set2</item>
+        <item>Set3</item>
+        <item>Set5</item>
+        <item>Set6</item>
+
+    </string-array>
+    <string-array name="Tab3items">
+        <item>Set1</item>
+        <item>Set2</item>
+        <item>Set3</item>
+        <item>Set4</item>
+        <item>Set5</item>
+    </string-array>
+
+    <string-array name="Tab4items">
+        <item>Set1</item>
+        <item>Set2</item>
+        <item>Set3</item>
+        <item>Set4</item>
+        <item>Set5</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>
