@@ -54,40 +54,21 @@ import java.util.List;
     String URLstring2="https://mature-railroads.000webhostapp.com/jsondevicelist.JSON";
     private static ProgressDialog mProgressDialog;
     ArrayList<DataModel> dataModelArrayList;
-
     private RvAdapter rvAdapter;
     private RecyclerView recyclerView;
     Button additem;
 
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setHasOptionsMenu(true);
+
         fetchingJSON();
-
-
     }
 
-
-
         @Override
-        public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-            super.onCreateOptionsMenu(menu, inflater);
-            inflater.inflate(R.menu.menu_main,menu);
-        }
-
-        @Override
-        public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.viewalarm:
-                    Toast.makeText(getActivity(), "Calls Icon Click", Toast.LENGTH_SHORT).show();
-                    return true;
-
-                default:
-                    return super.onOptionsItemSelected(item);
-            }
+        public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+            super.onActivityCreated(savedInstanceState);
+            setHasOptionsMenu(true);
         }
 
         @Override
@@ -100,34 +81,22 @@ import java.util.List;
         recyclerView.addItemDecoration(new SimpleDividerItemDecoration(getResources()));
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-
-
-
-
         additem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent iso=new Intent(getActivity(),DeviceList.class);
                 startActivity(iso);
 
-               // alertdialog();
-
-
             }
         });
         return view;
 
     }
-
     @Override
     public void onStart() {
         Toast.makeText(getActivity(),"Onstart ",Toast.LENGTH_SHORT).show();
-
-
-
         super.onStart();
     }
-
     @Override
     public void onResume() {
        final String data= SingletonSession2.Instance().getUsername();
@@ -206,6 +175,22 @@ import java.util.List;
 
         super.onStop();
     }
+        @Override
+        public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+            super.onCreateOptionsMenu(menu, inflater);
+            inflater.inflate(R.menu.menu_main,menu);
+        }
+
+        @Override
+        public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.viewalarm:
+                    Toast.makeText(getActivity(), "Calls Icon Click", Toast.LENGTH_SHORT).show();
+                    //return true;
+                default:
+                    return super.onOptionsItemSelected(item);
+            }
+        }
 
     private void fetchingJSON() {
 
