@@ -1,6 +1,7 @@
 package com.example.wifi.TabActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
@@ -24,6 +25,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.wifi.Database.Role;
+import com.example.wifi.Database.RoleDatabase;
 import com.example.wifi.R;
 
 import org.json.JSONArray;
@@ -36,6 +39,9 @@ import java.util.Map;
 
 public class NewRole extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     DatePickerDialog picker;
+    boolean isNewRole = false;
+    RoleDatabase roleDatabase;
+    Role updateRow;
     String[] role = {"Role1","Role2","Role3","Role4"};
     EditText rolename,expirydate;
     Spinner parentrole;
@@ -60,6 +66,13 @@ public class NewRole extends AppCompatActivity implements AdapterView.OnItemSele
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.newrole);
+        roleDatabase = Room.databaseBuilder(getApplicationContext(), RoleDatabase.class, RoleDatabase.DB_NAME).build();
+       int role_id=getIntent().getIntExtra("id",-100);
+        if (role_id == -100)
+            isNewRole = true;
+
+        if (!isNewRole) {
+
         //button
         create=findViewById(R.id.create);
         //edittext
@@ -113,7 +126,9 @@ public class NewRole extends AppCompatActivity implements AdapterView.OnItemSele
  create.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
+
     /*    String msg="";
+
 
         // Concatenation of the checked options in if
 
@@ -136,62 +151,33 @@ public class NewRole extends AppCompatActivity implements AdapterView.OnItemSele
         Toast.makeText(NewRole.this, msg + "are selected",
                 Toast.LENGTH_LONG).show();
 */
-        if(!( rolename.getText().toString().isEmpty() || expirydate.getText().toString().isEmpty())) {
-            final String spin=parentrole.getSelectedItem().toString();
+     /*   if(!( rolename.getText().toString().isEmpty() || expirydate.getText().toString().isEmpty())) {
+            final String spin=parentrole.getSelectedItem().toString();*/
 
 
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, "https://mature-railroads.000webhostapp.com/addrole.php",
-                    new Response.Listener<String>() {
-                        @Override
-                        public void onResponse(String response) {
-//If we are getting success from server
 
-                            Toast.makeText(NewRole.this,response,Toast.LENGTH_SHORT).show();
-                            try {
-                                JSONArray jsonArray = new JSONArray(response);
-                                for (int i = 0; i < jsonArray.length(); i++) {
-                                    JSONObject json_obj = jsonArray.getJSONObject(i);
-
-                                }
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-
-                        }
-                    },
-                    new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-//You can handle error here if you want
-                        }
-
-                    }) {
-                @Override
-                protected Map<String, String> getParams() throws AuthFailureError {
-                    Map<String, String> params = new HashMap<>();
-//Adding parameters to request
-
-                    params.put("rolename",rolename.getText().toString());
-                    params.put("expdate",expirydate.getText().toString());
-                    params.put("role",spin);
+            if (isNewRole) {
+                Role role=new Role();
+                role.rolename = rolename.getText().toString();
+                role.expirydate = expirydate.getText().toString();
+                role.roletype = spin;
 
 
-//returning parameter
-                    return params;
-                }
-            };
+            } else {
 
-//Adding the string request to the queue
-            RequestQueue requestQueue = Volley.newRequestQueue(NewRole.this);
-            requestQueue.add(stringRequest);
+                updateTodo.name = inTitle.getText().toString();
+                updateTodo.description = inDesc.getText().toString();
+                updateTodo.category = spinner.getSelectedItem().toString();
+
+                updateRow(updateTodo);
+            }
         }
-        else
+     /*   else
         {
             Toast.makeText(NewRole.this, "enter values correctly", Toast.LENGTH_LONG).show();
 
-        }
+        }*/
 
-    }
  });
     }
 
