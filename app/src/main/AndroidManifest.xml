@@ -53,8 +53,6 @@
         <activity android:name=".TabActivity.Tab1Set1Page" />
         <activity android:name=".TabActivity.Tab4" />
         <activity android:name=".TabActivity.TabMainActivity" />
-        <activity android:name=".LoginPage" />
-        <activity android:name=".MainActivity" />
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

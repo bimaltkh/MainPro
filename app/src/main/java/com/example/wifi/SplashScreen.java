@@ -8,6 +8,9 @@ import android.os.Handler;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
+import com.example.wifi.TabActivity.DeviceListhome;
+import com.example.wifi.TabActivity.TabMainActivity;
+
 public class SplashScreen extends AppCompatActivity {
     private static int SPLASH_SCREEN_TIME_OUT=2000;
     ImageView logo;
@@ -23,7 +26,7 @@ public class SplashScreen extends AppCompatActivity {
             @Override
             public void run() {
                 Intent i=new Intent(SplashScreen.this,
-                        MainActivity.class);
+                       DeviceListhome.class);
                 //Intent is used to switch from one activity to another.
 
                 startActivity(i);

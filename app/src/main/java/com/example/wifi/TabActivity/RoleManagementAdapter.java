@@ -74,7 +74,7 @@ public class RoleManagementAdapter extends BaseAdapter {
         role.setText(arrayList.get(position).getRole());
         date.setText(arrayList.get(position).getDate());
         status.setText(arrayList.get(position).getStatus());
-       
+
 
 
 

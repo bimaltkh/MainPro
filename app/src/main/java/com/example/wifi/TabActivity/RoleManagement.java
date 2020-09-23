@@ -16,6 +16,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.wifi.Database.Role;
 import com.example.wifi.R;
 
 import org.json.JSONArray;
@@ -46,18 +47,21 @@ public class RoleManagement extends AppCompatActivity {
         setContentView(R.layout.activity_role_management);
         getSupportActionBar().setTitle("Role Management");
         addrole=findViewById(R.id.addrole);
+        addrole.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent ss=new Intent(RoleManagement.this, NewRole.class);
+                startActivity(ss);
+            }
+        });
+
         listView=findViewById(R.id.list_role);
+        /*
         calendar = Calendar.getInstance();
         dateFormat = new SimpleDateFormat("MM/dd/yyyy");
         date = dateFormat.format(calendar.getTime());
         Toast.makeText(RoleManagement.this,date,Toast.LENGTH_SHORT).show();
-        addrole.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent ss=new Intent(RoleManagement.this,NewRole.class);
-                startActivity(ss);
-            }
-        });
+
         StringRequest stringRequest = new StringRequest(Request.Method.GET, URLstring,
                 new Response.Listener<String>() {
                     @Override
@@ -69,7 +73,7 @@ public class RoleManagement extends AppCompatActivity {
                         try {
                             removeSimpleProgressDialog();
 
-           /*                 JSONObject obj = new JSONObject(response);
+           *//*                 JSONObject obj = new JSONObject(response);
                             if(obj.optString("status").equals("true")){
 
                                 JSONArray dataArray2  = obj.getJSONArray("data");
@@ -88,7 +92,7 @@ public class RoleManagement extends AppCompatActivity {
 
                                }
 
-                      }*/
+                      }*//*
                             JSONArray jsonArray = new JSONArray(response);
                             for (int i = 0; i <jsonArray.length() ; i++) {
                                 RoleManagementData roleManagementData=new RoleManagementData();
@@ -139,6 +143,19 @@ public class RoleManagement extends AppCompatActivity {
         // request queue
         RequestQueue requestQueue = Volley.newRequestQueue(RoleManagement.this);
 
-        requestQueue.add(stringRequest);
+        requestQueue.add(stringRequest);*/
+
+RoleManagementData roleManagementData=new RoleManagementData();
+String ss="hdhd";
+String dd="adkfjdf";
+String si="asdasdf";
+        Role role= new Role();
+        roleManagementData.setRole(role.rolename="aaaa");
+        roleManagementData.setDate(role.expirydate="adafd");
+        roleManagementData.setStatus(si);
+        arrayList.add(roleManagementData);
+        roleManageAdapter  = new RoleManagementAdapter(RoleManagement.this,arrayList);
+        listView.setAdapter(roleManageAdapter);
+
     }
 }
