@@ -18,9 +18,6 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import com.example.wifi.Database.DaoAccess;
-import com.example.wifi.Database.Role;
-import com.example.wifi.Database.RoleDatabase;
 import com.example.wifi.R;
 
 import java.util.Calendar;
@@ -28,9 +25,9 @@ import java.util.Calendar;
 public class NewRole extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     DatePickerDialog picker;
     boolean isNewRole = false;
-    RoleDatabase roleDatabase;
+  /*  RoleDatabase roleDatabase;
     DaoAccess daoAccess;
-    Role updateRole;
+    Role updateRole;*/
     String[] role = {"Role1","Role2","Role3","Role4"};
     EditText rolename,expirydate;
     Spinner parentrole;
@@ -55,7 +52,7 @@ public class NewRole extends AppCompatActivity implements AdapterView.OnItemSele
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.newrole);
-        roleDatabase = Room.databaseBuilder(getApplicationContext(), RoleDatabase.class, RoleDatabase.DB_NAME).build();
+        //roleDatabase = Room.databaseBuilder(getApplicationContext(), RoleDatabase.class, RoleDatabase.DB_NAME).build();
        int role_id=getIntent().getIntExtra("id",-100);
         if (role_id == -100)
             isNewRole = true;
@@ -143,7 +140,7 @@ public class NewRole extends AppCompatActivity implements AdapterView.OnItemSele
      //  if(!( rolename.getText().toString().isEmpty() || expirydate.getText().toString().isEmpty())) {
             final String spin=parentrole.getSelectedItem().toString();
 
-
+/*
                     if (isNewRole) {
                         Role role = new Role();
                         role.rolename = rolename.getText().toString();
@@ -158,7 +155,7 @@ public class NewRole extends AppCompatActivity implements AdapterView.OnItemSele
                         updateRole.roletype = spin;
 
                         updateRow(updateRole);
-                    }
+                    }*/
                 }
      /*   else
         {
@@ -179,7 +176,7 @@ public class NewRole extends AppCompatActivity implements AdapterView.OnItemSele
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
-    @SuppressLint("StaticFieldLeak")
+   /* @SuppressLint("StaticFieldLeak")
     private void insertRow(Role role) {
         new AsyncTask<Role, Void, Long>() {
             @Override
@@ -217,7 +214,7 @@ public class NewRole extends AppCompatActivity implements AdapterView.OnItemSele
                 finish();
             }
         }.execute(role);
-
-    }
+*/
+   // }
 
 }

@@ -16,7 +16,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ViewAlarm.ViewAlarm"></activity>
+        <activity android:name=".RoleDataBase.MainActivity"></activity>
+        <activity android:name=".RoleDataBase.NewRole" />
+        <activity android:name=".ViewAlarm.ViewAlarm" />
         <activity android:name=".TabActivity.ViewAlarm.ViewAlarm" />
         <activity android:name=".TabActivity.NewRole" />
         <activity android:name=".TabActivity.NewSite" />

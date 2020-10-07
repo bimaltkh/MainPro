@@ -24,6 +24,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.wifi.DeviceList;
 import com.example.wifi.R;
+import com.example.wifi.RoleDataBase.MainActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -143,7 +144,7 @@ public class DeviceListhome extends AppCompatActivity {
         Toast.makeText(this, "Selected Item: " + item.getTitle(), Toast.LENGTH_SHORT).show();
         switch (item.getItemId()) {
             case R.id.system_roles:
-                Intent ss = new Intent(DeviceListhome.this,RoleManagement.class);
+                Intent ss = new Intent(DeviceListhome.this, MainActivity.class);
                 startActivity(ss);
                 break;
             case R.id.system_users:

@@ -16,7 +16,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.wifi.Database.Role;
+
 import com.example.wifi.R;
 
 import org.json.JSONArray;
@@ -149,9 +149,9 @@ RoleManagementData roleManagementData=new RoleManagementData();
 String ss="hdhd";
 String dd="adkfjdf";
 String si="asdasdf";
-        Role role= new Role();
+       /* Role role= new Role();
         roleManagementData.setRole(role.rolename="aaaa");
-        roleManagementData.setDate(role.expirydate="adafd");
+        roleManagementData.setDate(role.expirydate="adafd");*/
         roleManagementData.setStatus(si);
         arrayList.add(roleManagementData);
         roleManageAdapter  = new RoleManagementAdapter(RoleManagement.this,arrayList);

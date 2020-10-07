@@ -85,7 +85,7 @@ public class UserManagement extends AppCompatActivity {
                       }*/
                             JSONArray jsonArray = new JSONArray(response);
                             for (int i = 0; i <jsonArray.length() ; i++) {
-                                UserManagementData userManagementData=new UserManagementData();
+                                   UserManagementData userManagementData=new UserManagementData();
                                 JSONObject jsonObject = (JSONObject) jsonArray.get(i);
                                 userManagementData.setName (jsonObject.getString("name"));
                                 userManagementData.setRole(jsonObject.getString("role"));

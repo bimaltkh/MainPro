@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RoleDataBase.NewRole">
+
+    <ScrollView
+        android:id="@+id/vertical_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="130px"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/textView34"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="30dp"
+                android:text="Add New Role"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView31"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Role Name"
+                android:textAlignment="textStart"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/rolenameaddrole"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="role name"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/textView35"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="20dp"
+                android:text="Expiry Date"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/expirydateaddrole"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="expiry date"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/textView36"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:text="Parent Role"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/parentspiner"
+                android:layout_width="match_parent"
+                android:layout_height="34dp" />
+
+
+            <TextView
+                android:id="@+id/textView47"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="  Permissions - Sites"
+                android:textAlignment="gravity"
+                android:textStyle="bold" />
+
+
+            <HorizontalScrollView
+                android:id="@+id/horizontal_scroll_view"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:scrollbars="horizontal">
+
+
+                <LinearLayout
+                    android:id="@+id/linear_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
+                    <TableLayout
+                        android:layout_width="650dp"
+                        android:layout_height="wrap_content"
+                        android:shrinkColumns="*"
+                        android:stretchColumns="*">
+
+
+                        <TableRow
+                            android:id="@+id/tableRow1"
+                            android:layout_width="match_parent"
+                            android:layout_height="140dp">
+
+                            <CheckBox
+                                android:id="@+id/viewsite"
+                                android:layout_width="256dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="2"
+                                android:background="#dcdcdc"
+                                android:gravity="center"
+                                android:padding="20dip"
+                                android:text="View Site List"
+                                android:textColor="#000000"
+                                android:textSize="12sp"
+                                />
+
+                            <CheckBox
+                                android:id="@+id/addsite"
+                                android:layout_width="235dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:background="#d3d3d3"
+                                android:gravity="center"
+                                android:padding="20dip"
+                                android:text="Add Site"
+                                android:textColor="#000000"
+                                android:textSize="12sp" />
+
+                            <CheckBox
+                                android:id="@+id/viewsitedetail"
+                                android:layout_width="227dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:background="#d3d3d3"
+                                android:gravity="center"
+                                android:padding="20dip"
+                                android:text="View Site Details"
+                                android:textColor="#000000"
+                                android:textSize="12sp" />
+
+
+                        </TableRow>
+
+                        <TableRow
+                            android:id="@+id/tableRow2"
+                            android:layout_width="match_parent"
+                            android:layout_height="140dp">
+
+                            <CheckBox
+                                android:id="@+id/editsite"
+
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:background="#dcdcdc"
+                                android:gravity="center"
+                                android:padding="20dip"
+                                android:text="Edit Site"
+                                android:textColor="#000000"
+                                android:textSize="12sp" />
+
+                            <CheckBox
+                                android:id="@+id/deletesite"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:background="#d3d3d3"
+                                android:gravity="center"
+                                android:padding="20dip"
+                                android:text="Delete Site"
+                                android:textColor="#000000"
+                                android:textSize="12sp" />
+
+                            <CheckBox
+                                android:id="@+id/viewsiteparams"
+                                android:layout_width="94dp"
+                                android:layout_height="58dp"
+                                android:layout_weight="1"
+                                android:background="#d3d3d3"
+                                android:gravity="center"
+                                android:padding="20dip"
+                                android:text="View Site Params"
+                                android:textColor="#000000"
+                                android:textSize="12sp" />
+
+                        </TableRow>
+
+                        <TableRow
+                            android:id="@+id/tableRow3"
+                            android:layout_width="match_parent"
+                            android:layout_height="140dp">
+
+                            <CheckBox
+                                android:id="@+id/viewalarm"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:background="#dcdcdc"
+                                android:gravity="center"
+                                android:padding="20dip"
+                                android:text="View Alarm"
+                                android:textColor="#000000"
+                                android:textSize="12sp" />
+
+                            <CheckBox
+                                android:id="@+id/viewalarmhistory"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:background="#d3d3d3"
+                                android:gravity="center"
+                                android:padding="20dip"
+                                android:text="View Alarm History"
+                                android:textColor="#000000"
+                                android:textSize="10sp" />
+
+                            <CheckBox
+                                android:id="@+id/viewsitesetting"
+                                android:layout_width="148dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:background="#d3d3d3"
+                                android:gravity="center"
+                                android:padding="20dip"
+                                android:text="View Site Settings"
+                                android:textColor="#000000"
+                                android:textSize="12sp" />
+
+
+                        </TableRow>
+
+                        <TableRow
+                            android:id="@+id/tableRow4"
+                            android:layout_width="match_parent"
+                            android:layout_height="140dp">
+
+                            <CheckBox
+                                android:id="@+id/initializesettings"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:background="#dcdcdc"
+                                android:gravity="center"
+                                android:padding="20dip"
+                                android:text="Initialize Settings"
+                                android:textColor="#000000"
+                                android:textSize="10sp" />
+
+                            <CheckBox
+                                android:id="@+id/viewSiteidRequest"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:background="#d3d3d3"
+                                android:gravity="center"
+                                android:padding="20dip"
+                                android:text="View SiteID Requests"
+                                android:textColor="#000000"
+                                android:textSize="12sp" />
+
+                            <CheckBox
+                                android:id="@+id/editsitesetting"
+                                android:layout_width="95dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:background="#d3d3d3"
+                                android:gravity="center"
+                                android:padding="20dip"
+                                android:text="Edit Site Settings"
+                                android:textColor="#000000"
+                                android:textSize="12sp" />
+
+
+                        </TableRow>
+
+                        <TableRow
+                            android:id="@+id/tableRow5"
+                            android:layout_width="match_parent"
+                            android:layout_height="140dp">
+
+                            <CheckBox
+                                android:id="@+id/controlsection"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:background="#dcdcdc"
+                                android:gravity="center"
+                                android:padding="20dip"
+                                android:text="Control Section"
+                                android:textColor="#000000"
+                                android:textSize="10sp" />
+
+                            <CheckBox
+                                android:id="@+id/sendotp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:background="#d3d3d3"
+                                android:gravity="center"
+                                android:padding="20dip"
+                                android:text="Send OTP"
+                                android:textColor="#000000"
+                                android:textSize="12sp" />
+
+                            <CheckBox
+                                android:id="@+id/energylevels"
+                                android:layout_width="126dp"
+                                android:layout_height="wrap_content"
+                                android:background="#d3d3d3"
+                                android:gravity="center"
+                                android:padding="20dip"
+                                android:text="Energy Levels"
+                                android:textColor="#000000"
+                                android:textSize="12sp" />
+
+
+                        </TableRow>
+
+                    </TableLayout>
+
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+            <TextView
+                android:id="@+id/textView50"
+                android:layout_width="match_parent"
+                android:layout_height="28dp"
+                android:text="  Permission-Report"
+                android:textStyle="bold" />
+
+            <CheckBox
+                android:id="@+id/viewreporthomepage"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="#d3d3d3"
+                android:text="View Report Homepage" />
+
+            <TextView
+                android:id="@+id/textView49"
+                android:layout_width="match_parent"
+                android:layout_height="28dp"
+                android:text="  Permission-Users"
+                android:textStyle="bold" />
+
+            <CheckBox
+                android:id="@+id/viewuserlist"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="#d3d3d3"
+                android:text="View User List" />
+
+            <CheckBox
+                android:id="@+id/adduser"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="#d3d3d3"
+                android:text="Add User" />
+
+            <CheckBox
+                android:id="@+id/edituser"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="#d3d3d3"
+                android:text="Edit User" />
+
+            <CheckBox
+                android:id="@+id/deleteuser"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="#d3d3d3"
+                android:text="Delete User" />
+            <CheckBox
+                android:id="@+id/changesupervisor"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="#d3d3d3"
+                android:text="Change Supervisor" />
+            <TextView
+                android:id="@+id/permissionroles"
+                android:layout_width="match_parent"
+                android:layout_height="28dp"
+                android:text="  Permission-Roles"
+                android:textStyle="bold" />
+
+            <CheckBox
+                android:id="@+id/viewrolelist"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="#d3d3d3"
+                android:text="View Role List" />
+
+            <CheckBox
+                android:id="@+id/addrole"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="#d3d3d3"
+                android:text="Add Role" />
+
+            <CheckBox
+                android:id="@+id/editrole"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="#d3d3d3"
+                android:text="Edit Role" />
+            <CheckBox
+                android:id="@+id/deleterole"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="#d3d3d3"
+                android:text="Delete Role" />
+
+            <TextView
+                android:id="@+id/permissionsettings"
+                android:layout_width="match_parent"
+                android:layout_height="28dp"
+                android:text="  Permission-Settings"
+                android:textStyle="bold" />
+            <CheckBox
+                android:id="@+id/viewsystemsettings"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="#d3d3d3"
+                android:text="View System Settings" />
+            <CheckBox
+                android:id="@+id/editsystemsettings"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="#d3d3d3"
+                android:text="Edit System Settings" />
+
+            <Button
+                android:id="@+id/create"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="create" />
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
