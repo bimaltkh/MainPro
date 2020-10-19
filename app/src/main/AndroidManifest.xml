@@ -17,6 +17,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".RoleDataBase.MainActivity"></activity>
+        <activity android:name=".RoleDatabaseRoom.MainActivity"/>
+        <activity android:name=".RoleDatabaseRoom.TodoNoteActivity"/>
         <activity android:name=".RoleDataBase.NewRole" />
         <activity android:name=".ViewAlarm.ViewAlarm" />
         <activity android:name=".TabActivity.ViewAlarm.ViewAlarm" />
@@ -55,6 +57,7 @@
         <activity android:name=".TabActivity.Tab1Set1Page" />
         <activity android:name=".TabActivity.Tab4" />
         <activity android:name=".TabActivity.TabMainActivity" />
+        <activity android:name=".LoginPage"/>
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

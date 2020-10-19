@@ -1,4 +1,4 @@
-package com.example.wifi.ViewAlarm;
+  package com.example.wifi.ViewAlarm;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.LifecycleService;
@@ -31,14 +31,14 @@ public class ViewAlarm extends AppCompatActivity {
     ListView listViewalarm;
     ArrayList<ViewAlarmData> arrayList = new ArrayList<>();
     ViewAlarmAdapter viewAlarmAdapter;
-String  URLstring="https://mature-railroads.000webhostapp.com/alarmlist.JSON";
+String req="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_alarm);
         listViewalarm=findViewById(R.id.viewalarm);
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, URLstring,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, req,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

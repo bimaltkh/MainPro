@@ -1,7 +1,4 @@
-package com.example.wifi.RoleDataBase;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
+package com.example.wifi.RoleDatabaseRoom;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -15,31 +12,47 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.room.Room;
+
 import com.example.wifi.R;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class NewRole extends AppCompatActivity {
+public class TodoNoteActivity extends AppCompatActivity {
+
     Spinner spinner;
     EditText inTitle, inDesc;
     Button btnDone, btnDelete;
-    boolean isNewUser = false;
+    boolean isNewTodo = false;
     CheckBox ViewSiteListCB,AddSiteCB,ViewSiteDetailsCB,
-            EditSiteCB,DeleteSiteCB,ViewSiteParamsCB,ViewAlarmCB,
-            ViewAlarmHistoryCB,ViewSiteSettingsCB,InitializeSettingsCB,
-            ViewSiteIDRequestsCB,EditSiteSettingsCB,ControlSectionCB,
-            SendOTPCB,EnergyLevelsCB,ViewReportHomepageCB,ViewUserListCB, AddUserCB,EditUserCB,DeleteUserCB,
-            ChangeSupervisorCB,ViewRolelistCB,AddRoleCB,EditRoleCB,DeleteRoleCB,ViewSystemSettingsCB,EditSystemSettingsCB;
+    EditSiteCB,DeleteSiteCB,ViewSiteParamsCB,ViewAlarmCB,
+    ViewAlarmHistoryCB,ViewSiteSettingsCB,InitializeSettingsCB,
+    ViewSiteIDRequestsCB,EditSiteSettingsCB,ControlSectionCB,
+    SendOTPCB,EnergyLevelsCB,ViewReportHomepageCB,ViewUserListCB, AddUserCB,EditUserCB,DeleteUserCB,
+    ChangeSupervisorCB,ViewRolelistCB,AddRoleCB,EditRoleCB,DeleteRoleCB,ViewSystemSettingsCB,EditSystemSettingsCB;
 
+
+    private String[] categories = {
+            "Android",
+            "iOS",
+            "Kotlin",
+            "Swift"
+    };
+
+    public ArrayList<String> spinnerList = new ArrayList<>(Arrays.asList(categories));
     MyDatabase myDatabase;
 
-    DBRole updateDBRole;
+    Role updateTodo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_role2);
+        setContentView(R.layout.newrole2);
+    //    Toolbar toolbar = findViewById(R.id.toolbar);
+        //getSupportActionBar(toolbar);
 
         spinner = findViewById(R.id.parentspiner);
         inTitle = findViewById(R.id.rolenameaddrole);
@@ -52,7 +65,7 @@ public class NewRole extends AppCompatActivity {
         DeleteSiteCB=findViewById(R.id.deletesite);
         ViewSiteParamsCB=findViewById(R.id.viewsiteparams);
         ViewAlarmCB=findViewById(R.id.viewalarm);
-        ViewAlarmHistoryCB=findViewById(R.id.viewalarmhistory);
+        ViewAlarmHistoryCB=findViewById(R.id.alarmhistory);
         ViewSiteSettingsCB=findViewById(R.id.viewsitesetting);
         InitializeSettingsCB=findViewById(R.id.initializesettings);
         ViewSiteIDRequestsCB=findViewById(R.id.viewSiteidRequest);
@@ -73,119 +86,122 @@ public class NewRole extends AppCompatActivity {
         ViewSystemSettingsCB=findViewById(R.id.viewsystemsettings);
         EditSystemSettingsCB=findViewById(R.id.editsystemsettings);
 
-        //  btnDelete = findViewById(R.id.btnDelete);
+      //  btnDelete = findViewById(R.id.btnDelete);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, spinnerList);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
 
         myDatabase = Room.databaseBuilder(getApplicationContext(), MyDatabase.class, MyDatabase.DB_NAME).build();
 
-        int role_id = getIntent().getIntExtra("id", -100);
+        int todo_id = getIntent().getIntExtra("id", -100);
 
-        if (role_id == -100)
-            isNewUser = true;
+        if (todo_id == -100)
+            isNewTodo = true;
 
-        if (!isNewUser) {
-fetchDBRoleById(role_id);
-            // btnDelete.setVisibility(View.VISIBLE);
+        if (!isNewTodo) {
+            fetchTodoById(todo_id);
+           // btnDelete.setVisibility(View.VISIBLE);
         }
 
         btnDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isNewUser) {
+                if (isNewTodo) {
                     String ss="Selected";
-                    DBRole dbRole=new DBRole();
-                    dbRole.RoleName = inTitle.getText().toString();
-                    dbRole.ExpiryDate = inDesc.getText().toString();
-                    //todo.category = spinner.getSelectedItem().toString();
-                    // boolean checked =  v.;
+                    Role todo = new Role();
+                    todo.name = inTitle.getText().toString();
+                    todo.description = inDesc.getText().toString();
+                    todo.category = spinner.getSelectedItem().toString();
+                   // boolean checked =  v.;
 
                     if(ViewSiteListCB.isChecked()) {
-                      //  Toast.makeText(TodoNoteActivity.this, "clicked", Toast.LENGTH_SHORT).show();
-                       dbRole.ViewSiteList = ss; }
+                        Toast.makeText(TodoNoteActivity.this, "clicked", Toast.LENGTH_SHORT).show();
+                        todo.ViewSiteList = ss; }
                     if(AddSiteCB.isChecked()){
-                     //   Toast.makeText(TodoNoteActivity.this,"clicked",Toast.LENGTH_SHORT).show();
-                        dbRole.AddSite=ss;}
+                            Toast.makeText(TodoNoteActivity.this,"clicked",Toast.LENGTH_SHORT).show();
+                    todo.AddSite=ss;}
                     if(ViewSiteDetailsCB.isChecked()){
-                        dbRole.ViewSiteDetails=ss;}
+                        todo.ViewSiteDetails=ss;}
                     if(EditSiteCB.isChecked()){
-                        dbRole.EditSite=ss;}
+                        todo.EditSite=ss;}
                     if(DeleteSiteCB.isChecked()){
-                        dbRole.DeleteSite=ss;
+                        todo.DeleteSite=ss;
                     }
                     if(ViewSiteParamsCB.isChecked()){
-                        dbRole.ViewSiteParams=ss;
+                        todo.ViewSiteParams=ss;
                     }
                     if(ViewAlarmCB.isChecked()){
-                        dbRole.ViewAlarm=ss;
+                        todo.ViewAlarm=ss;
                     }
-                    if(ViewAlarmHistoryCB.isChecked()){
-                        dbRole.ViewAlarmHistory=ss;
-                    }
+                  if (ViewAlarmHistoryCB.isChecked()) {
+                      todo.ViewAlarmHistory =ss;
+                  }
                     if(ViewSiteSettingsCB.isChecked()){
-                        dbRole.ViewSiteSettings=ss;
+                        todo.ViewSiteSettings=ss;
                     }
                     if(InitializeSettingsCB.isChecked()){
-                        dbRole.InitializeSettings=ss;
+                        todo.InitializeSettings=ss;
                     }
                     if(ViewSiteIDRequestsCB.isChecked()){
-                        dbRole.ViewSiteIDRequests=ss;
+                        todo.ViewSiteIDRequests=ss;
                     }
                     if(EditSiteSettingsCB.isChecked()){
-                        dbRole.EditSiteSettings=ss;
+                        todo.EditSiteSettings=ss;
                     }
                     if(ControlSectionCB.isChecked()){
-                        dbRole.ControlSection=ss;
+                        todo.ControlSection=ss;
                     }
                     if(SendOTPCB.isChecked()){
-                        dbRole.SendOTP=ss;
+                        todo.SendOTP=ss;
                     }
                     if(EnergyLevelsCB.isChecked()){
-                        dbRole.EnergyLevels=ss;
+                        todo.EnergyLevels=ss;
                     }
                     if(ViewReportHomepageCB.isChecked()){
-                        dbRole.ViewReportHomepage=ss;
+                        todo.ViewReportHomepage=ss;
                     }
                     if(ViewUserListCB.isChecked()){
-                        dbRole.ViewUserList=ss;
+                        todo.ViewUserList=ss;
                     }
                     if(AddUserCB.isChecked()){
-                        dbRole.AddUser=ss;
+                        todo.AddUser=ss;
                     }
                     if(EditUserCB.isChecked()){
-                        dbRole.EditUser=ss;
+                        todo.EditUser=ss;
                     }
                     if(DeleteUserCB.isChecked()){
-                        dbRole.DeleteUser=ss;
+                        todo.DeleteUser=ss;
                     }
                     if(ChangeSupervisorCB.isChecked()){
-                        dbRole.ChangeSupervisor=ss;
+                        todo.ChangeSupervisor=ss;
                     }
                     if(ViewRolelistCB.isChecked()){
-                        dbRole.ViewRolelist=ss;
+                        todo.ViewRolelist=ss;
                     }
                     if(AddRoleCB.isChecked()){
-                        dbRole.AddRole=ss;
+                        todo.AddRole=ss;
                     }
                     if(EditRoleCB.isChecked()){
-                        dbRole.EditRole=ss;
+                        todo.EditRole=ss;
                     }
                     if(DeleteRoleCB.isChecked()){
-                        dbRole.DeleteRole=ss;
+                        todo.DeleteRole=ss;
                     }
                     if(ViewSystemSettingsCB.isChecked()){
-                        dbRole.ViewSystemSettings=ss;
+                        todo.ViewSystemSettings=ss;
                     }
                     if(EditSystemSettingsCB.isChecked()){
-                        dbRole.EditSystemSettings=ss;
+                        todo.EditSystemSettings=ss;
                     }
 
-                    insertRow(dbRole);
+                    insertRow(todo);
 
-                } else {
+                    } else {
 
-                    updateDBRole.RoleName = inTitle.getText().toString();
-                    updateDBRole.ExpiryDate = inDesc.getText().toString();
-                 //   updateTodo.category = spinner.getSelectedItem().toString();
-                    updateRow(updateDBRole);
+                    updateTodo.name = inTitle.getText().toString();
+                    updateTodo.description = inDesc.getText().toString();
+                    updateTodo.category = spinner.getSelectedItem().toString();
+                    updateRow(updateTodo);
                 }
             }
         });
@@ -197,36 +213,44 @@ fetchDBRoleById(role_id);
             }
         });*/
     }
+
+
+
+    private void getSupportActionBar(Toolbar toolbar) {
+    }
+
     @SuppressLint("StaticFieldLeak")
-    private void fetchDBRoleById(final int role_id) {
-        new AsyncTask<Integer, Void, DBRole>() {
+    private void fetchTodoById(final int todo_id) {
+        new AsyncTask<Integer, Void, Role>() {
             @Override
-            protected DBRole doInBackground(Integer... params) {
-                return myDatabase.daoAccess().fetchDBRoleListById(params[0]);
+            protected Role doInBackground(Integer... params) {
+                return myDatabase.daoAccess().fetchTodoListById(params[0]);
             }
 
             @Override
-            protected void onPostExecute(DBRole dbRole) {
-                super.onPostExecute(dbRole);
-                inTitle.setText(dbRole.RoleName);
-                inDesc.setText(dbRole.ExpiryDate);
+            protected void onPostExecute(Role todo) {
+                super.onPostExecute(todo);
+                inTitle.setText(todo.name);
+               inDesc.setText(todo.description);
+                spinner.setSelection(spinnerList.indexOf(todo.category));
+                //inDesc.setText(todo.ViewSiteList);
                 String ss="Selected";
-                if(ss.equals(dbRole.ViewSiteList)) {
+                if(ss.equals(todo.ViewSiteList)) {
                     ViewSiteListCB.setChecked(true);
                 }
 
-                updateDBRole=dbRole;
+                updateTodo = todo;
             }
-        }.execute(role_id);
+        }.execute(todo_id);
 
     }
 
     @SuppressLint("StaticFieldLeak")
-    private void insertRow(DBRole dbRole ) {
-        new AsyncTask<DBRole, Void, Long>() {
+    private void insertRow(Role todo) {
+        new AsyncTask<Role, Void, Long>() {
             @Override
-            protected Long doInBackground(DBRole... params) {
-                return myDatabase.daoAccess().insertDBRole(params[0]);
+            protected Long doInBackground(Role... params) {
+                return myDatabase.daoAccess().insertTodo(params[0]);
             }
 
             @Override
@@ -238,16 +262,16 @@ fetchDBRoleById(role_id);
                 setResult(RESULT_OK, intent);
                 finish();
             }
-        }.execute(dbRole);
+        }.execute(todo);
 
     }
 
     @SuppressLint("StaticFieldLeak")
-    private void deleteRow(DBRole dbRole) {
-        new AsyncTask<DBRole, Void, Integer>() {
+    private void deleteRow(Role todo) {
+        new AsyncTask<Role, Void, Integer>() {
             @Override
-            protected Integer doInBackground(DBRole... params) {
-                return myDatabase.daoAccess().deleteDBRole(params[0]);
+            protected Integer doInBackground(Role... params) {
+                return myDatabase.daoAccess().deleteTodo(params[0]);
             }
 
             @Override
@@ -259,17 +283,17 @@ fetchDBRoleById(role_id);
                 setResult(RESULT_OK, intent);
                 finish();
             }
-        }.execute(dbRole);
+        }.execute(todo);
 
     }
 
 
     @SuppressLint("StaticFieldLeak")
-    private void updateRow(DBRole dbRole) {
-        new AsyncTask<DBRole, Void, Integer>() {
+    private void updateRow(Role todo) {
+        new AsyncTask<Role, Void, Integer>() {
             @Override
-            protected Integer doInBackground(DBRole... params) {
-                return myDatabase.daoAccess().updateDBRole(params[0]);
+            protected Integer doInBackground(Role... params) {
+                return myDatabase.daoAccess().updateTodo(params[0]);
             }
 
             @Override
@@ -281,7 +305,9 @@ fetchDBRoleById(role_id);
                 setResult(RESULT_OK, intent);
                 finish();
             }
-        }.execute(dbRole);
+        }.execute(todo);
 
     }
+
+
 }

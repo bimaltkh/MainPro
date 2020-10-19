@@ -1,4 +1,4 @@
-package com.example.wifi.RoleDataBase;
+package com.example.wifi.RoleDatabaseRoom;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,14 +16,16 @@ import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
-    private List<DBRole> dbRoleList;
+    private List<Role> todoList;
     private RecyclerViewAdapter.ClickListener clickListener;
     MyDatabase myDatabase;
+    RecyclerViewAdapter recyclerViewAdapter;
+    Role todo;
 
 
     public RecyclerViewAdapter(ClickListener clickListener) {
         this.clickListener = clickListener;
-        dbRoleList = new ArrayList<>();
+        todoList = new ArrayList<>();
 
 
     }
@@ -43,28 +45,28 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(RecyclerViewAdapter.ViewHolder holder, int position) {
-       DBRole dbRole = dbRoleList.get(position);
-        holder.txtName.setText(dbRole.RoleName);
+        Role todo = todoList.get(position);
+        holder.txtName.setText(todo.name);
 //   holder.txtNo.setText("#" + String.valueOf(todo.todo_id));
-        holder.txtDesc.setText(dbRole.ViewSiteList);
-       // holder.txtCategory.setText(dbRole.category);
+        holder.txtDesc.setText(todo.ViewSiteList);
+        holder.txtCategory.setText(todo.category);
 
 
     }
 
     @Override
     public int getItemCount() {
-        return dbRoleList.size();
+        return todoList.size();
     }
 
-public void updateTodoList(List<DBRole> data) {
-        dbRoleList.clear();
-        dbRoleList.addAll(data);
+public void updateTodoList(List<Role> data) {
+        todoList.clear();
+        todoList.addAll(data);
         notifyDataSetChanged();
     }
 
-    public void addRow(DBRole data) {
-        dbRoleList.add(data);
+    public void addRow(Role data) {
+        todoList.add(data);
         notifyDataSetChanged();
     }
 
@@ -95,14 +97,14 @@ public void updateTodoList(List<DBRole> data) {
           editButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    clickListener.launchIntent(dbRoleList.get(getAdapterPosition()).role_id);
+                    clickListener.launchIntent(todoList.get(getAdapterPosition()).todo_id);
                 }
             });
     delete.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            myDatabase.daoAccess().deleteDBRole(dbRoleList.get(getAdapterPosition()));
-            dbRoleList.remove(getAdapterPosition());
+            myDatabase.daoAccess().deleteTodo(todoList.get(getAdapterPosition()));
+            todoList.remove(getAdapterPosition());
             notifyItemRemoved(getAdapterPosition());
             /*notifyItemRemoved(getAdapterPosition());
             notifyItemRangeChanged(getAdapterPosition(),todoList.size());*/

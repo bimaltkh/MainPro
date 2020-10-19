@@ -6,6 +6,9 @@
     <string name="tab_text_2">log</string>
     <string name="tab_text_3">params</string>
     <string name="tab_text_4">others</string>
+
+    <string name="urlIP">https://mature-railroads.000webhostapp.com/</string>
+    <string name="URL2">alarmlist.JSON</string>
     <string-array name="Tab2items">
         <item>Set1</item>
         <item>Set2</item>

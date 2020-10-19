@@ -40,6 +40,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.wifi.DeviceList;
 import com.example.wifi.MainActivity;
 import com.example.wifi.R;
+import com.example.wifi.ViewAlarm.ViewAlarm;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -186,7 +187,8 @@ import java.util.List;
             switch (item.getItemId()) {
                 case R.id.viewalarm:
                     Toast.makeText(getActivity(), "Calls Icon Click", Toast.LENGTH_SHORT).show();
-                    //return true;
+                    Intent intent = new Intent(getActivity(), ViewAlarm.class);
+                    startActivity(intent);                    //return true;
                 default:
                     return super.onOptionsItemSelected(item);
             }

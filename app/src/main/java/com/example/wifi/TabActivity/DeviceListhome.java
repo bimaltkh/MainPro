@@ -24,7 +24,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.wifi.DeviceList;
 import com.example.wifi.R;
-import com.example.wifi.RoleDataBase.MainActivity;
+import com.example.wifi.RoleDatabaseRoom.MainActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;

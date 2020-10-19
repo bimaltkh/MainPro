@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -80,6 +81,7 @@ public class NewUser extends AppCompatActivity implements AdapterView.OnItemSele
 //If we are getting success from server
 
                             Toast.makeText(NewUser.this, response, Toast.LENGTH_LONG).show();
+                            Log.d("adg" ,response);
                             try {
                                 JSONArray jsonArray = new JSONArray(response);
                                 for (int i = 0; i < jsonArray.length(); i++) {
