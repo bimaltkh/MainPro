@@ -8,7 +8,7 @@
     <string name="tab_text_4">others</string>
 
     <string name="urlIP">https://mature-railroads.000webhostapp.com/</string>
-    <string name="URL2">alarmlist.JSON</string>
+    <string name="URL2">"jsondevicelist.JSON"</string>
     <string-array name="Tab2items">
         <item>Set1</item>
         <item>Set2</item>

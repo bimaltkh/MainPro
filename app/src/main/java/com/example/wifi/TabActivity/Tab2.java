@@ -106,7 +106,7 @@ import java.util.List;
         Toast.makeText(getActivity(),"On Resume",Toast.LENGTH_SHORT).show();
 
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, URLstring,
+     StringRequest stringRequest = new StringRequest(Request.Method.GET, URLstring,
 
                 new Response.Listener<String>() {
                     @Override
@@ -161,6 +161,7 @@ import java.util.List;
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
 
         requestQueue.add(stringRequest);
+
         super.onResume();
     }
 
@@ -230,6 +231,10 @@ import java.util.List;
                                     playerModel.setB2Value(dataobj.getString("blue2"));
                                     playerModel.setIDDevice(data);
                                     dataModelArrayList.add(playerModel);
+
+                              /*      dataModelArrayList.add(0, playerModel);
+                                    rvAdapter.notifyItemInserted(1);*/
+
 
                                 }
 

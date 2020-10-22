@@ -23,6 +23,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.wifi.DeviceList;
+import com.example.wifi.FetchReq;
 import com.example.wifi.R;
 import com.example.wifi.RoleDatabaseRoom.MainActivity;
 
@@ -42,8 +43,6 @@ public class DeviceListhome extends AppCompatActivity {
     ArrayList<MyData> arrayList = new ArrayList<>();
     MyAdapter adapter;
 
-    String URLstring = "https://mature-railroads.000webhostapp.com/jsondevicelist.JSON";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +58,7 @@ public class DeviceListhome extends AppCompatActivity {
              }
          });
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, URLstring,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, FetchReq.RequestURL.concat(FetchReq.DevicePageURL),
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

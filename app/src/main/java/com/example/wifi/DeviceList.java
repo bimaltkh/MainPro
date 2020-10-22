@@ -18,6 +18,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.wifi.TabActivity.DataModel;
+import com.example.wifi.TabActivity.DeviceListhome;
+import com.example.wifi.TabActivity.MyAdapter;
+import com.example.wifi.TabActivity.MyData;
 import com.example.wifi.TabActivity.SingletonSession;
 import com.example.wifi.TabActivity.SingletonSession2;
 import com.example.wifi.TabActivity.Tab2;
@@ -33,14 +36,11 @@ import static com.example.wifi.TabActivity.Tab2.removeSimpleProgressDialog;
 
 public class DeviceList extends AppCompatActivity {
 
-    ArrayList<String> items = new ArrayList<String>();
+    ArrayList<DeviceListData> arrayList = new ArrayList<>();
     String name;
     ListView listView;
     String itemValue;
-
-
-
-
+    DeviceListAdapter deviceListAdapter;
     String URLstring="https://mature-railroads.000webhostapp.com/jsondevicelist.JSON";
 
     @Override
@@ -48,68 +48,66 @@ public class DeviceList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_device_list);
          listView = findViewById(R.id.mobile_list);
-                StringRequest stringRequest = new StringRequest(Request.Method.GET, URLstring,
-                        new Response.Listener<String>() {
-                            @Override
-                            public void onResponse(String response) {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, FetchReq.RequestURL.concat(FetchReq.DevicePageURL),
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
 
-                                Log.d("strrrrr", ">>" + response);
-
-                                try {
-                                    removeSimpleProgressDialog();
-
-                                    JSONObject obj = new JSONObject(response);
-                                    if(obj.optString("status").equals("true")){
-
-                                        JSONArray dataArray2  = obj.getJSONArray("data");
-
-                                        for (int i = 0; i < dataArray2.length(); i++) {
-
-                                            DataModel playerModel = new DataModel();
-                                            JSONObject dataobj = dataArray2.getJSONObject(i);
-
-                                            name=dataobj.getString("name");
+                        Log.d("strrrrr", ">>" + response);
 
 
-                                           items.add(name);
+                        try {
+                            removeSimpleProgressDialog();
 
-                                        }
-                                        ArrayAdapter adapter = new ArrayAdapter<String>(DeviceList.this,R.layout.listview, items);
-
-
-                                        listView.setAdapter(adapter);
+                            JSONObject obj = new JSONObject(response);
+                            if (obj.optString("status").equals("true")) {
 
 
+                                JSONArray dataArray2 = obj.getJSONArray("data");
 
-                                    }
+                                for (int i = 0; i < dataArray2.length(); i++) {
 
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
+
+                                    JSONObject dataobj = dataArray2.getJSONObject(i);
+
+                                    DeviceListData deviceListData=new DeviceListData();
+                                    deviceListData.setName(dataobj.getString("name"));
+                                    deviceListData.setColor(dataobj.getString("color"));
+                                    deviceListData.setAlarm1(dataobj.getString("alarm1"));
+                                    deviceListData.setAlarm2(dataobj.getString("alarm2"));
+                                    deviceListData.setAlarm3(dataobj.getString("alarm3"));
+                                    arrayList.add(deviceListData);
+                                    deviceListAdapter = new DeviceListAdapter(DeviceList.this, arrayList);
+                                    listView.setAdapter(deviceListAdapter);
+
                                 }
+
                             }
-                        },
-                        new Response.ErrorListener() {
-                            @Override
-                            public void onErrorResponse(VolleyError error) {
-                                //displaying the error in toast if occurrs
-                                Toast.makeText(DeviceList.this, error.getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                        });
 
-                // request queue
-                RequestQueue requestQueue = Volley.newRequestQueue(DeviceList.this);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        //displaying the error in toast if occurrs
+                        Toast.makeText(DeviceList.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
 
-                requestQueue.add(stringRequest);
+        // request queue
+        RequestQueue requestQueue = Volley.newRequestQueue(DeviceList.this);
 
+        requestQueue.add(stringRequest);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        itemValue = (String) listView.getItemAtPosition(position);
-      String editValue=itemValue;
-              SingletonSession2.Instance().setUsername(editValue);
-              finish();
-
-
+        itemValue = arrayList.get(position).getName();
+          String editValue=itemValue;
+          SingletonSession2.Instance().setUsername(editValue);
+          finish();
 
     }
 });

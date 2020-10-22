@@ -14,6 +14,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.wifi.FetchReq;
 import com.example.wifi.R;
 import com.example.wifi.TabActivity.UserManageAdapter;
 import com.example.wifi.TabActivity.UserManagement;
@@ -31,14 +32,14 @@ public class ViewAlarm extends AppCompatActivity {
     ListView listViewalarm;
     ArrayList<ViewAlarmData> arrayList = new ArrayList<>();
     ViewAlarmAdapter viewAlarmAdapter;
-String req="";
+String req="https://mature-railroads.000webhostapp.com/alarmlist.JSON";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_alarm);
         listViewalarm=findViewById(R.id.viewalarm);
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, req,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET,FetchReq.RequestURL.concat(FetchReq.AlarmPageURL),
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
